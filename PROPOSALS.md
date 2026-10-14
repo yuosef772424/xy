@@ -1,6 +1,6 @@
 # Proposals Inbox
 
-New instruction ideas waiting for the owner's review. **Any agent, in any project, may add to this list** (see [22 · Proposing new instructions](playbooks/22-proposing-instructions.md)). The owner reviews them in batches; accepted ones are applied in the next consolidation pass and logged in `NOTES.md`.
+New instruction ideas waiting for the owner's review. **Any agent, in any project, may add to this list** (see [09 · Improvement §5](playbooks/09-improvement.md)). The owner reviews them in batches; accepted ones are applied in the next consolidation pass and logged in `NOTES.md`.
 
 **Status:** 🆕 new · 👀 under review · ✅ accepted · ❌ rejected (with reason) · ⏸ deferred (with reopen-if)
 

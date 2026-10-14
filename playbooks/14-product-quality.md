@@ -1,6 +1,6 @@
-# 24 · Product Quality (What Users Actually Experience)
+# 14 · Product Quality: What Users Actually Experience
 
-**Goal:** The product isn't only correct in code; it is **pleasant, clear, accessible, fast, and trustworthy** for the people who use it. This is often what separates a professional product from a working prototype.
+> **Goal:** The product isn't only correct; it is **pleasant, clear, accessible, fast, and trustworthy**. · **Read when:** building or reviewing any user-facing feature. · **Pays off because:** this is what separates a professional product from a working prototype, and fixing UX late is expensive.
 
 ## 1. User experience
 

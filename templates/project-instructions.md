@@ -35,5 +35,10 @@
 ## Gotchas
 - <Non-obvious things that break, slow you down, or surprise newcomers.>
 
+## Working agreements
+- Language of technical files: English (default) / other:
+- Merge mode: owner merges / planner may merge after CI and review
+- Model for builder agents: e.g. sonnet
+
 ## Do not touch
 - <Generated files, vendored code, sensitive configs.>

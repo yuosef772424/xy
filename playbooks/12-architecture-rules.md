@@ -1,10 +1,10 @@
-# 12a · Architecture Rules (Structure by Rules, Not by Taste)
+# 12 · Architecture Rules: Structure by Rules, Not by Taste
 
-**Goal:** Build a structure that stays clean as the project **grows and changes**, so that adding a feature means *adding* code, not *rewriting* it.
+> **Goal:** A structure that stays clean as the project **grows and changes**, so that adding a feature means *adding* code, not *rewriting* it. · **Read when:** designing ([11](11-architecture.md)), adding a module, and during architecture health checks. · **Pays off because:** it prevents the typical AI pattern of an elegant first design that tangles under change and forces repeated restructuring.
 
 **The typical AI failure:** the first structure looks excellent, but every change adds a small shortcut. After enough changes the modules are tangled, and the only way out is a full restructure, which then happens again. These rules prevent that in three ways: they decide the structure by **explicit criteria**, they test it against the **future feature list**, and they **enforce it automatically** so it can't drift.
 
-Apply these rules during [architecture planning](12-architecture-planning.md). Any exception needs a written decision record.
+Apply these rules during [architecture planning](11-architecture.md). Any exception needs a written decision record.
 
 ---
 
@@ -19,7 +19,7 @@ Apply these rules during [architecture planning](12-architecture-planning.md). A
 | **Could (later)** | Nice to have; build only if the data supports it | Backlog |
 | **Won't (now)** | Explicitly out of scope | Listed, so nobody builds it by accident |
 
-Rule: the MVP is the **smallest set that tests the core value**. If it has more than ~7 main features, cut.
+Rule: the MVP is the **smallest set that tests the core value**. If it feels long (more than a handful of main features), look for what can move to Should.
 
 ### A2. Design for the full list, build only the MVP
 
@@ -106,9 +106,10 @@ This test is the main defense against future entanglement. It turns "will this s
 
 ## Part E · Controlled growth
 
-### E1. Size limits (adjust per stack)
+### E1. Size guidelines (adjust per stack and language)
+These are signals to look closer, not mechanical limits. The goal: each unit stays easy to understand and change.
 
-| Unit | Soft limit | Action when exceeded |
+| Unit | Look closer around | Typical action |
 |---|---|---|
 | Function | ~50 lines | Extract functions |
 | File | ~300–400 lines | Split by responsibility |

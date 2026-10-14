@@ -5,12 +5,12 @@ Ready-made Claude Code configuration that turns this playbook from *documents to
 | File | What it does |
 |---|---|
 | `CLAUDE.md` | Loaded at the start of every session. It imports `AGENTS.md` and points to the project state files. |
-| `.claude/agents/builder.md` | A builder subagent (cheaper model) for executing one phase ([13](../playbooks/13-execution-orchestration.md)). |
-| `.claude/agents/researcher.md` | A read-only research subagent for prior-art and market research ([12b](../playbooks/12b-market-and-feasibility-research.md), [13](../playbooks/13-execution-orchestration.md) §4b). |
-| `.claude/agents/reviewer.md` | A read-only reviewer subagent ([06](../playbooks/06-code-review.md)). |
-| `.claude/skills/handoff/` | `/handoff`: writes a ready-to-paste hand-off message ([17](../playbooks/17-working-with-the-owner.md) §6). |
+| `.claude/agents/builder.md` | A builder subagent (cheaper model) for executing one phase ([13](../playbooks/13-execution.md)). |
+| `.claude/agents/researcher.md` | A read-only research subagent for prior-art and market research ([10](../playbooks/10-market-research.md), [13](../playbooks/13-execution.md) §5). |
+| `.claude/agents/reviewer.md` | A read-only reviewer subagent ([04](../playbooks/04-task-workflow.md) §4). |
+| `.claude/skills/handoff/` | `/handoff`: writes a ready-to-paste hand-off message ([02](../playbooks/02-owner.md) §6). |
 | `.claude/skills/status/` | `/status`: a short measurable status report for the owner. |
-| `.claude/skills/propose/` | `/propose`: adds a proposal to the playbook's inbox ([22](../playbooks/22-proposing-instructions.md)). |
+| `.claude/skills/propose/` | `/propose`: adds a proposal to the playbook's inbox ([09](../playbooks/09-improvement.md) §5). |
 | `.claude/hooks/session-start.sh` | Shows `STATUS.md` and recent `LESSONS.md` entries when a session starts, so every session begins with the current state. |
 | `.claude/settings.json` | Registers the hook. |
 

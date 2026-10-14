@@ -1,6 +1,6 @@
 # Tools Registry
 
-General tools for any project. Check this list **before** building something new; improve an existing tool rather than duplicating it. See [21 · Tooling & R&D](../playbooks/21-tooling-and-rnd.md).
+General tools for any project. Check this list **before** building something new; improve an existing tool rather than duplicating it. See [09 · Improvement §4](../playbooks/09-improvement.md).
 
 | Tool | Purpose | Status | Measured benefit | Last checked |
 |---|---|---|---|---|

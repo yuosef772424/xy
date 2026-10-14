@@ -1,16 +1,12 @@
-# 12b · Market & Feasibility Research
+# 10 · Market & Feasibility Research
 
-**Goal:** Before designing anything, know what already exists, what users actually want, what makes us different, and whether the project is worth building at all.
+> **Goal:** Before designing anything, know what already exists, what users want, what makes us different, and whether the project is worth building at all. · **Read when:** step 1 of [architecture planning](11-architecture.md); refresh it at major milestones. · **Pays off because:** it prevents building the wrong thing, missing features competitors prove users need, or ignoring a better existing solution. These are the costliest mistakes a project can make.
 
-This happens **first** in [architecture planning](12-architecture-planning.md), before scope and structure are decided. Its findings feed the Must/Should/Could list in [12a](12a-architecture-rules.md).
-
-## Research effort
-
-This is a **deep research** task (level 3 in [00b](00b-evidence-over-agreement.md)). It is done once per project and refreshed only at major milestones. Run it through research agents that return structured summaries, so the planner's context only receives the conclusions.
+This is **deep research** (level 3 in [01](01-judgment.md)), and one of the best uses of the budget ([08](08-efficiency.md)). Run it through research agents that return structured summaries; the findings feed the Must/Should/Could list in [12](12-architecture-rules.md).
 
 ## Step 1 · Find as many similar products as possible
 
-Aim for **10–25** products, covering:
+Find **as many relevant products as it takes to see the landscape** (often 10–25), covering:
 
 - **Direct competitors:** same problem, same users.
 - **Indirect competitors:** same problem, solved differently (including spreadsheets, manual work, or "doing nothing").
@@ -64,7 +60,7 @@ End with one of these:
 - **GO WITH CHANGES:** viable if we change X (a narrower niche, a different feature focus, a different pricing model).
 - **NO-GO:** the reasons, and what evidence would change the verdict.
 
-Per [00 · Honest judgment](00-honest-judgment.md): a NO-GO or GO-WITH-CHANGES verdict is a valuable result. Don't bend the research toward the answer the owner hopes for.
+Per [01 · Judgment](01-judgment.md): a NO-GO or GO-WITH-CHANGES verdict is a valuable result. Don't bend the research toward the answer the owner hopes for.
 
 ## Output
 

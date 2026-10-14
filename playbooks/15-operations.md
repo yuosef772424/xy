@@ -1,8 +1,6 @@
-# 23 · Operations (After It's Built: Deploy, Watch, Protect, Maintain)
+# 15 · Operations: Deploy, Monitor, Protect, Maintain
 
-**Goal:** The project keeps working **after** launch: it is deployed safely, problems are seen before users report them, data can be recovered, and dependencies stay healthy.
-
-Apply this once a project is heading to real users. Scale it to the project: a personal tool needs a fraction of this, and a paid product needs all of it.
+> **Goal:** The project keeps working **after** launch. · **Read when:** a project is heading to real users, and for incidents. Scale it to the project: a personal tool needs a fraction of this, and a paid product needs all of it. · **Pays off because:** outages, data loss, and rotting dependencies cost far more than preventing them.
 
 ## 1. Deployment
 
@@ -32,13 +30,13 @@ When something breaks in production:
 
 1. **Stabilize first** (roll back, disable the feature flag, scale up), then investigate.
 2. **Communicate** a short status to affected users or the owner.
-3. **Fix the root cause** ([05](05-debugging.md)) and add a test or alert that would have caught it.
-4. **Write a short blameless post-mortem:** what happened, the impact, the cause, and what changes. Record the lessons ([18](18-continuous-improvement.md)).
+3. **Fix the root cause** ([06](06-debugging.md)) and add a test or alert that would have caught it.
+4. **Write a short blameless post-mortem:** what happened, the impact, the cause, and what changes. Record the lessons ([09](09-improvement.md)).
 
 ## 5. Maintenance
 
 - **Dependencies:** automated update PRs (Dependabot or Renovate) and a vulnerability audit in CI. Update in small, regular steps, not in a painful big jump once a year.
-- **Tech debt:** keep a visible list; spend a regular slice of the effort on it, guided by the architecture health check ([12a](12a-architecture-rules.md) Part F).
+- **Tech debt:** keep a visible list; spend a regular slice of the effort on it, guided by the architecture health check ([12](12-architecture-rules.md) Part F).
 - **Costs:** watch hosting and API spending; alert on unusual jumps.
 
 ## Checklist before launch

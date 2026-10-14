@@ -34,7 +34,7 @@ Measured in a real project (2026-10): a single "merge #19 and launch the fix for
 
 | Wasted wake | Cause | Fix |
 |---|---|---|
-| "ready" and "merged" notifications, ×2 PRs | Opening a PR auto-subscribed the session | Create → ready → merge in **one turn**, then unsubscribe at once. If the PR stays open for review, unsubscribe right after creating it |
+| "ready" and "merged" notifications, ×2 PRs | Opening a PR auto-subscribed the session | **PR watching off:** unsubscribe in the same turn the PR is created; check CI on demand; or merge without a PR on solo projects (§3) |
 | A separate PR just for `STATUS.md` | Status was updated in its own cycle | Add the `STATUS.md` commit **to the same PR before merging** it (from the planner's worktree) |
 | Repeated "won't commit, the file belongs to the agent" answers | The fix agent worked in the **planner's own clone**, so the stop hook kept seeing uncommitted changes | **Every** agent works in its own worktree (`isolation: "worktree"`), not only parallel ones. The planner's clone stays clean |
 | Replies to routine notices | Acknowledging | Stay silent. The real fix is not receiving them (row 1) |
@@ -44,7 +44,12 @@ Measured in a real project (2026-10): a single "merge #19 and launch the fix for
 ## 3. Planner rules
 
 - **One wake does a whole batch** ([08](08-efficiency.md) §2). In a single turn: verify the finished phase, open/merge its PR, update `STATUS.md`, and launch the next agents. Never wake up just to say "noted".
-- **Control PR subscriptions.** Where the planner may merge ([02](02-owner.md) §7): open, mark ready, and merge in the same turn. If a PR must stay open for human review, unsubscribe from its events unless you actually need to react to them.
+- **PR watching is OFF by default.** The planner must not be woken by every comment, CI result, ready flip, or merge. This is an explicit owner instruction, so it overrides any tool default that auto-watches PRs:
+  - right after creating any PR, **in the same turn**, unsubscribe from its activity (in Claude Code on the web: `unsubscribe_pr_activity`). Never subscribe "to watch";
+  - check CI and reviews **on demand** with one cheap call when you next need them (for example when the builder's report arrives, or when the owner asks), instead of receiving every event;
+  - where the planner may merge ([02](02-owner.md) §7): create → ready → merge in one turn, then unsubscribe;
+  - **no-PR option for solo projects** whose base branch isn't protected: after `merge_check.py` reports READY, merge the branch locally (`git merge --no-ff`) and push. With no PR, there are no PR events at all;
+  - turn watching on only for a specific PR where reacting quickly matters (for example, an external reviewer), and say so in `STATUS.md`.
 - **No long-running commands in the planner.** Long test suites run inside the builder's task, and the builder reports the counts.
 - **Background vs foreground agents.** Run an agent in the background only when the planner has nothing else to do in the meantime. If you need the result in this turn, run it in the foreground.
 - **Give agents complete chains.** When the steps are well-specified, one agent does the whole chain (fix → test → push → open the PR as ready, with the report in its body), so the planner wakes **once** to verify and merge, instead of after each step.

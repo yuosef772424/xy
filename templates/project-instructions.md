@@ -39,7 +39,8 @@
 - Language of technical files: English (default) / other:
 - Project tier: tiny / small / medium / large (see playbooks/00-principles.md §6)
 - Autonomy level: cautious / standard / trusted (see playbooks/02-owner.md §3b)
-- Merge mode: owner merges / planner may merge after CI and review
+- Merge mode: owner merges / planner may merge after CI and review / planner merges locally without a PR (solo, unprotected base)
+- PR watching: off (default: unsubscribe right after creating a PR; check CI on demand) / on for specific PRs
 - Model for builder agents: e.g. sonnet
 
 ## Do not touch

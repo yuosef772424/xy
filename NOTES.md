@@ -85,5 +85,11 @@ From Claude's suggestions (S) and from mining the owner's past sessions (P):
 - **`00c` is the seed of the new `AGENTS.md`.** In the final pass, `AGENTS.md` should be roughly: principles (00c) + honest judgment (00 summary) + core loop + owner protocol summary (17) + links.
 - **`18` and `NOTES.md` overlap in spirit:** this repository's `NOTES.md` is itself a lessons/improvement log for the playbook. Keep it as the playbook's own retrospective file.
 
+### From instruction 14 (R&D and tooling)
+- Added `21-tooling-and-rnd.md` and a tools registry (`scripts/README.md`), with an ideas backlog: status report, check runner, eval runner, new-project scaffolder.
+- **Overlap:** `18` §2 (automate repeats) and `21` cover the same habit at different scales. In the final pass, `18` should keep the "notice and script it" habit and link to `21` for standards, budget, and the registry.
+- **The R&D share (10–20%) is a guideline** per `00c`; the real test is the return in `21` §3.
+- **This repository is itself the general toolbox.** The final `README.md` should present it as playbook + toolkit. The `new_project` scaffolder would be the highest-value next tool, since it applies the whole playbook in one command.
+
 ### Validation
 - **Instructions reduce sycophancy but don't remove it,** because it comes partly from training. Add an `evals/` folder with test prompts (deliberately bad ideas, false claims stated confidently, pushback on correct answers, and good ideas that should *not* be criticized) to measure whether the instructions work with each model.

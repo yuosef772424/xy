@@ -17,7 +17,7 @@ AI agents are only as good as their instructions. Most projects give them none, 
 | [`templates/`](templates/) | Ready-to-fill files: project instructions, task briefs, PR descriptions. |
 | [`prompts/`](prompts/) | How to write prompts that get great results. |
 | [`evals/`](evals/) | Test cases that check whether a model actually follows these instructions. |
-| [`scripts/`](scripts/) | Tools such as `gen_map.py`, which generates the project map. |
+| [`scripts/`](scripts/) | Reusable tools, listed in the [tools registry](scripts/README.md). |
 
 ### Playbooks
 
@@ -46,6 +46,7 @@ AI agents are only as good as their instructions. Most projects give them none, 
 18. [Continuous improvement: get smarter with every session](playbooks/18-continuous-improvement.md)
 19. [Token budget: spend for value, not for minimum cost](playbooks/19-token-budget.md)
 20. [Prompts for LLM features inside your products](playbooks/20-llm-feature-prompts.md)
+21. [Tooling & R&D: invest tokens to work better](playbooks/21-tooling-and-rnd.md)
 
 ## Quick start
 

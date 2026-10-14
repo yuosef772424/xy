@@ -16,6 +16,7 @@ AI agents are only as good as their instructions. Most projects give them none, 
 | [`playbooks/`](playbooks/) | Step-by-step guides, one per kind of task. |
 | [`templates/`](templates/) | Ready-to-fill files: project instructions, task briefs, PR descriptions. |
 | [`prompts/`](prompts/) | How to write prompts that get great results. |
+| [`scripts/`](scripts/) | Tools such as `gen_map.py`, which generates the project map. |
 
 ### Playbooks
 
@@ -36,6 +37,9 @@ AI agents are only as good as their instructions. Most projects give them none, 
     - 12a. [Architecture rules: structure by rules, not by taste](playbooks/12a-architecture-rules.md)
     - 12b. [Market & feasibility research](playbooks/12b-market-and-feasibility-research.md)
 13. [Execution orchestration: one planner, builder agents, low token cost](playbooks/13-execution-orchestration.md)
+14. [Codebase maps: navigate without reading everything](playbooks/14-codebase-maps.md)
+15. [Automated testing: let machines verify](playbooks/15-automated-testing.md)
+16. [Batching work: more done per invocation, same quality](playbooks/16-batching-work.md)
 
 ## Quick start
 

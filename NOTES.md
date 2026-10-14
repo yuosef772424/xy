@@ -49,6 +49,9 @@ Fixes for the risks identified after v1.0, each turned into a mechanism where po
 Testing caught and fixed 3 bugs: `gen_map` treated docs-only folders as modules; installed playbooks linked to files missing in projects; the tools registry was installed under the wrong name.
 Still not automatic: detecting conflicts between rules (handled by the priority order + `PROPOSALS.md`), and judging design or research quality (handled by reviews and health checks).
 
+## v1.2: wake budget (2026-10-14)
+From a real planner transcript: one merge-and-launch step cost about 8 wakes instead of 2. Causes: auto-subscribed PR notifications, a separate STATUS PR, and a fix agent working in the planner's clone (so the stop hook kept rejecting "uncommitted changes"). Fixes in `13` §2b and §3: isolation for **every** agent, STATUS inside the same PR, create→ready→merge→unsubscribe in one turn, and complete agent chains. Added `scripts/merge_check.py` (one-call pre-merge verification) and updated the builder agent and the brief template.
+
 ## Owner directives (keep these when editing)
 1. No flattery and no reflexive criticism; balanced, evidence-based judgment.
 2. Separate architecture planning from execution; structure by rules.

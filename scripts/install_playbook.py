@@ -48,7 +48,7 @@ def plan_copies(target):
     for folder in ("playbooks", "templates"):
         for name in sorted(os.listdir(os.path.join(SRC, folder))):
             pairs.append((os.path.join(SRC, folder, name), os.path.join(target, folder, name)))
-    for name in ("gen_map.py", "doc_health.py", "install_playbook.py", "README.md"):
+    for name in ("gen_map.py", "doc_health.py", "merge_check.py", "install_playbook.py", "README.md"):
         pairs.append((os.path.join(SRC, "scripts", name), os.path.join(target, "scripts", name)))
     kit = os.path.join(SRC, "claude-code")
     for root, _, files in os.walk(kit):

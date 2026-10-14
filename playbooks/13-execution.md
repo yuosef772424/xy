@@ -26,7 +26,20 @@ Things that wake the planner:
 1. a message from the owner;
 2. a background agent finishing (once, at the end);
 3. a background shell command finishing;
-4. events on a subscribed PR: CI results, reviews, comments, merges. Opening a PR may subscribe the session automatically.
+4. events on a subscribed PR: CI results, reviews, comments, merges. Opening a PR may subscribe the session automatically;
+5. **a stop hook that rejects the end of a turn**, for example "there are uncommitted changes". The planner is sent back to work, answers, tries to stop again, and is rejected again. This loop can repeat many times.
+
+### 2b. Wake budget: typical waste and its fix
+Measured in a real project (2026-10): a single "merge #19 and launch the fix for #13" step produced **about 8 planner wakes**, when 2 would have been enough. The causes, and the fixes:
+
+| Wasted wake | Cause | Fix |
+|---|---|---|
+| "ready" and "merged" notifications, ×2 PRs | Opening a PR auto-subscribed the session | Create → ready → merge in **one turn**, then unsubscribe at once. If the PR stays open for review, unsubscribe right after creating it |
+| A separate PR just for `STATUS.md` | Status was updated in its own cycle | Add the `STATUS.md` commit **to the same PR before merging** it (from the planner's worktree) |
+| Repeated "won't commit, the file belongs to the agent" answers | The fix agent worked in the **planner's own clone**, so the stop hook kept seeing uncommitted changes | **Every** agent works in its own worktree (`isolation: "worktree"`), not only parallel ones. The planner's clone stays clean |
+| Replies to routine notices | Acknowledging | Stay silent. The real fix is not receiving them (row 1) |
+
+**Target:** one wake per completed agent, plus one per owner message. Anything more is waste, so find its cause and remove it.
 
 ## 3. Planner rules
 
@@ -34,7 +47,8 @@ Things that wake the planner:
 - **Control PR subscriptions.** Where the planner may merge ([02](02-owner.md) §7): open, mark ready, and merge in the same turn. If a PR must stay open for human review, unsubscribe from its events unless you actually need to react to them.
 - **No long-running commands in the planner.** Long test suites run inside the builder's task, and the builder reports the counts.
 - **Background vs foreground agents.** Run an agent in the background only when the planner has nothing else to do in the meantime. If you need the result in this turn, run it in the foreground.
-- **Isolation.** Agents running in parallel each get their own worktree or clone. Two agents, or an agent and the planner, must never share a working tree.
+- **Give agents complete chains.** When the steps are well-specified, one agent does the whole chain (fix → test → push → open the PR as ready, with the report in its body), so the planner wakes **once** to verify and merge, instead of after each step.
+- **Isolation, always.** **Every** agent gets its own worktree or clone, even when it is the only one running. The planner's own working tree must stay clean: uncommitted files there trigger stop-hook loops (§2b). When the planner edits docs while agents run, it uses its own worktree too.
 - **Never commit another agent's work in progress,** even if a hook complains about uncommitted changes.
 - **Keep the planner context small:**
   - Builders return short reports. The planner doesn't read big files or logs itself.
@@ -79,10 +93,10 @@ Things that wake the planner:
 
 ## 6. Review and merge
 
-1. Read the builder's report, then **re-check its claims with cheap commands**, not by trusting the narrative: commit order, protected files, registry diffs, conflicts (`merge-tree`).
+1. Read the builder's report, then **re-check its claims with cheap commands** (one call: [`scripts/merge_check.py`](../scripts/merge_check.py) `<branch> --base origin/main --append-only <registries> --protected <paths>` reports commits, files, conflicts, and append-only or protected-path violations, with a READY / NOT READY verdict), not by trusting the narrative: commit order, protected files, registry diffs, conflicts (`merge-tree`).
 2. Apply the acceptance rule mechanically. A failed phase is a valid result: record it as a failure, don't hide it.
 3. Where the planner may merge ([02](02-owner.md) §7): create the PR → mark it ready → merge with the full head SHA, all in one turn. Otherwise open the PR as a draft, mark it ready for the owner, and unsubscribe from its events.
-4. Put the `STATUS.md` update in the same batch, never in a turn of its own.
+4. Put the `STATUS.md` update **in the same PR, before merging it**, never in a separate PR or a turn of its own.
 
 ## 7. Balancing cost and quality
 
@@ -123,3 +137,4 @@ If a builder reports that the planned structure doesn't work (for example, an in
 - One planner wake ≈ a full re-read of its context. Notification chains (subscribed → ready → merged) each cost a wake.
 - (Measured in one project, 2026-10; numbers will vary.) Agent reviews cost 95k–160k tokens each. That is still cheaper than the same reading in the planner context, which would be re-read on every later wake.
 - An agent and the planner once shared a clone, and the planner's `git checkout` failed against the agent's uncommitted file. Hence the isolation rule.
+- Again later: a fix agent ran in the planner's clone, and the stop hook's "uncommitted changes" check kept re-waking the planner. Together with PR notifications and a separate STATUS PR, one step cost about 8 wakes instead of 2 (§2b). Hence **isolation always**, and "STATUS in the same PR".

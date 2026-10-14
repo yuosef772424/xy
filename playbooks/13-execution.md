@@ -19,7 +19,12 @@ The owner doesn't open separate build sessions: every builder is a subagent of t
 
 Each time the planner is **invoked**, it re-reads its whole context: system prompt, tools, and conversation. Cached tokens are cheap (about 10% of normal input at the time of writing), but a large context times many wake-ups still adds up. For example, 30 wakes × 350k tokens ≈ 10M tokens re-read.
 
-**The main cost drivers are the number of planner wakes × the planner's context size.**
+**Cost ≈ the planner's context size × the number of planner model steps.** A *step* is every time the model runs: each wake, **and each tool call inside a turn** (every tool result is sent back with the whole context). So a wake with 10 tool calls costs about 10 re-reads, not 1. Three levers, in order of impact:
+1. **Context size.** A planner at 350k tokens pays 7× more per step than one at 50k. Fresh sessions per roadmap item and short agent reports matter most.
+2. **Tool calls per turn.** Use one-call checks (`merge_check.py`), parallel calls, and scripts instead of many small commands.
+3. **Wakes.** Remove the wake sources listed below.
+
+Note: cache reads are cheap only while the cache is warm. After a long gap (longer than the cache lifetime, which can be as short as a few minutes), the next step pays the full input price to rebuild the cache. Long waits between wakes are therefore not free.
 
 Things that wake the planner:
 
@@ -51,7 +56,7 @@ Measured in a real project (2026-10): a single "merge #19 and launch the fix for
   - **no-PR option for solo projects** whose base branch isn't protected: after `merge_check.py` reports READY, merge the branch locally (`git merge --no-ff`) and push. With no PR, there are no PR events at all;
   - turn watching on only for a specific PR where reacting quickly matters (for example, an external reviewer), and say so in `STATUS.md`.
 - **No long-running commands in the planner.** Long test suites run inside the builder's task, and the builder reports the counts.
-- **Background vs foreground agents.** Run an agent in the background only when the planner has nothing else to do in the meantime. If you need the result in this turn, run it in the foreground.
+- **Background vs foreground agents.** A foreground agent costs one step when its result returns; a background agent costs one wake when it finishes. Use **foreground** to chain dependent steps (verify → merge → launch the next agent → review → merge) inside one turn. Use **background** only when the planner truly has nothing to do meanwhile, or when the agent will run longer than the cache lifetime anyway.
 - **Give agents complete chains.** When the steps are well-specified, one agent does the whole chain (fix → test → push → open the PR as ready, with the report in its body), so the planner wakes **once** to verify and merge, instead of after each step.
 - **Isolation, always.** **Every** agent gets its own worktree or clone, even when it is the only one running. The planner's own working tree must stay clean: uncommitted files there trigger stop-hook loops (§2b). When the planner edits docs while agents run, it uses its own worktree too.
 - **Never commit another agent's work in progress,** even if a hook complains about uncommitted changes.

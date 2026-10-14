@@ -6,6 +6,9 @@
 - Read `STATUS.md` (current state) and the recent entries of `LESSONS.md` (the session-start hook shows them).
 - Navigate with `PROJECT_MAP.md` and each module's `MODULE.md`; don't read the whole codebase.
 
+## Planner handoff
+`.planner/HANDOFF.md` is the planner's private state for the next planner session; the `/handoff` skill writes it. Subagents never read `.planner/` unless their brief names a file there.
+
 ## PR notifications: off
 Do not watch PRs. After creating any PR, unsubscribe from its activity in the same turn, and don't reply to PR notifications. Check CI and reviews on demand with one call when needed. (Owner instruction: every notification wakes the session and re-reads its whole context.)
 

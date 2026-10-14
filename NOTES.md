@@ -52,6 +52,9 @@ Still not automatic: detecting conflicts between rules (handled by the priority 
 ## v1.2: wake budget (2026-10-14)
 From a real planner transcript: one merge-and-launch step cost about 8 wakes instead of 2. Causes: auto-subscribed PR notifications, a separate STATUS PR, and a fix agent working in the planner's clone (so the stop hook kept rejecting "uncommitted changes"). Fixes in `13` §2b and §3: isolation for **every** agent, STATUS inside the same PR, create→ready→merge→unsubscribe in one turn, and complete agent chains. Added `scripts/merge_check.py` (one-call pre-merge verification) and updated the builder agent and the brief template.
 
+## v1.3: file-based planner handoff (2026-10-14)
+`/handoff` now writes `.planner/HANDOFF.md` ([template](templates/planner-handoff.md)), commits it, and gives the owner one paste-ready restart line, plus an optional `/compact` line that keeps only the handoff. `.planner/` is planner-only: the subagents, the brief template, and `CLAUDE.md` say not to read it unless a brief names a file there (this is instruction-level separation, not a hard guarantee). Context thresholds: a fresh session after each roadmap item or at ~150–200k tokens; ~500k is an emergency limit. Tested in a real Claude Code session: a ~1k-token handoff was written and committed.
+
 ## Owner directives (keep these when editing)
 1. No flattery and no reflexive criticism; balanced, evidence-based judgment.
 2. Separate architecture planning from execution; structure by rules.

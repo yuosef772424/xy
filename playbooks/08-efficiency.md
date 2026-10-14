@@ -27,7 +27,7 @@ Every invocation re-reads the whole context, so fewer invocations means fewer re
 **Quality guards:** plan the whole batch first, with a definition of done for each task · one commit per task · fast checks after each task, the full check at the end · **stop on an unclear failure,** and don't pile changes onto a broken base · report each task separately · self-review the whole diff.
 
 ## 2b. Keep long sessions from bloating
-A session's context grows with every turn, and every later turn pays to re-read it. Start fresh **when a roadmap item is finished**, or when the context passes roughly **a third to a half** of the window (`/context`): write a hand-off (`/handoff`), update `STATUS.md`, and continue in a new session. A fresh session that reads `STATUS.md` and the maps usually costs far less than carrying a huge history.
+A session's context grows with every turn, and every later turn pays to re-read it. Start fresh **when a roadmap item is finished**, or when the context reaches roughly **150–200k tokens**, whichever comes first (check with `/context`). Write the handoff (`/handoff` → `.planner/HANDOFF.md`, [02](02-owner.md) §6), update `STATUS.md`, and continue in a new session. Treat around **500k** as an emergency limit, not a target: by then every step costs about 10× what it would at 50k. A fresh session that reads `STATUS.md` and the maps usually costs far less than carrying a huge history.
 
 ## 3. Fewer round-trips within a turn
 - Run independent tool calls **in parallel** (read several files, lint and test together).

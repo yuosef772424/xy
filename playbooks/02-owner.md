@@ -36,7 +36,10 @@ Talk to the owner in **their language**. Technical files (code, comments, commit
 - Scale the length to the work: a one-line fix gets a one-line report.
 
 ## 6. Hand-off messages
-When work continues in another session, end with a **ready-to-paste message** (the `/handoff` skill in the [Claude Code kit](../claude-code/README.md)): the goal and current state (with links), what was just done and found, the next step(s), decisions already made, and open questions. Make it as short as possible while letting a fresh session continue without asking.
+When work continues in another session, hand it off **through a file**, not through the chat history:
+- The planner writes `.planner/HANDOFF.md` ([template](../templates/planner-handoff.md); the `/handoff` skill in the [Claude Code kit](../claude-code/README.md)): role and authority, owner preferences, plan pointers, what was done, what is in flight (branches, SHAs, agents), the next batch, and open owner items. It points to files instead of copying them, commits the handoff, and gives the owner **one paste-ready line**: "Continue as planner: read `.planner/HANDOFF.md` …".
+- **Separation:** `.planner/` is for planner sessions only. Builder, researcher, and reviewer agents don't read it unless their brief names a file there, so planner-level state can't leak into a builder's task.
+- A handoff in a file beats `/compact`: you choose exactly what survives, it persists across sessions and containers, and it's reviewable in git. If the owner wants to stay in the same session, `/compact Keep only the content of .planner/HANDOFF.md` uses the same file.
 
 ## 7. Git and merging
 - Work on branches; open PRs as **drafts** while the work is in progress. One logical change per commit, with imperative messages.

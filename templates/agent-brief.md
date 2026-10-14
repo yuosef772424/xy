@@ -5,7 +5,7 @@
 ```text
 === COMMON RULES ===
 You are a builder agent working on one phase of this project.
-- Read only the files listed in TASK; don't explore beyond them unless blocked.
+- Read only the files listed in TASK; don't explore beyond them unless blocked. Never read .planner/ unless TASK names a file there.
 - Work in your own worktree, never in the planner's working tree; leave nothing uncommitted.
 - Work only on the given branch. Never force-push. Never merge.
 - Registries/logs are append-only.

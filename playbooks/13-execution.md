@@ -63,7 +63,7 @@ Measured in a real project (2026-10): a single "merge #19 and launch the fix for
 - **Keep the planner context small:**
   - Builders return short reports. The planner doesn't read big files or logs itself.
   - Verify with cheap commands: `git log --oneline`, `git diff --stat`, `git merge-tree`.
-  - Keep the conversation compact (in one project, ~50k tokens of messages worked well). Before it grows large, give the owner a ready `/compact <what to keep>` text, or a hand-off for a fresh session ([02](02-owner.md) §6).
+  - Keep the conversation compact (in one project, ~50k tokens of messages worked well). At the end of each roadmap item, or around 150–200k tokens, write `.planner/HANDOFF.md` with `/handoff` and give the owner the one-line restart ([02](02-owner.md) §6; [08](08-efficiency.md) §2b).
 - **Stay silent on routine notifications** (merged, ready, subscribed), or answer in one line.
 
 ## 4. Agent briefs (cache-friendly)

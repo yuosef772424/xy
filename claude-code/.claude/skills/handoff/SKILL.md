@@ -1,11 +1,13 @@
 ---
 name: handoff
-description: Write a ready-to-paste hand-off message so another or a new session can continue this work without reading the history. Use at the end of a work session or when switching sessions.
+description: Save a planner handoff so a fresh session can continue with a small context. Use when the owner asks for a handoff, when a roadmap item is finished, or when the context grows large (around 150–200k tokens).
 ---
-Write a single hand-off message the owner can copy as-is. Include:
-1. Goal and current state (link STATUS.md and the key files).
-2. What was just done and what was found.
-3. The next concrete step(s).
-4. Decisions already made (so they aren't re-argued).
-5. Open questions and risks.
-Keep it as short as possible while still being complete. Put it in one fenced block, for easy copying.
+1. Write `.planner/HANDOFF.md` following `templates/planner-handoff.md`. Overwrite the previous one; git history keeps the old versions.
+   - Point to files (STATUS.md, ROADMAP.md, decisions) instead of copying them. Record only what isn't already written down: role and authority, owner preferences, in-flight agents, branches and SHAs, the next batch, open owner items.
+   - Keep it as compact as continuity allows (often 1–3k tokens).
+   - Never include secrets.
+2. Make sure `STATUS.md` is current, then commit and push both files on the planner's working branch, never directly on the default branch unless the project's merge mode allows it. Use your own worktree if agents are running.
+3. Reply with a single paste-ready line for the owner:
+   `Continue as planner: read .planner/HANDOFF.md (commit <short-sha>), then AGENTS.md and STATUS.md. Start with "Next batch".`
+4. If the owner prefers to stay in this session, also give them:
+   `/compact Keep only the content of .planner/HANDOFF.md as just written; drop everything else.`

@@ -21,5 +21,17 @@ Tokens are a budget to **invest**. Cut waste (repetition, chatter, re-reading); 
 ## 5. Get better every session
 Every session should leave the project, and the way it is built, a little better: a lesson recorded, a script added, a map fixed, a proposal filed. → [09 · Improvement](09-improvement.md)
 
-## 6. Every artifact must earn its place
+## 6. Scale the process to the project
+Use only as much process as the work deserves. Heavy process on small work is waste; light process on big work is risk.
+
+| Tier | Example | Use |
+|---|---|---|
+| **Tiny** | a script, a one-off fix | `AGENTS.md` core loop only |
+| **Small** | a tool or small app, days of work | + maps, tests and checks, `STATUS.md` / `LESSONS.md` |
+| **Medium** | a product with several modules, weeks of work | + architecture and rules (11–12), execution with agents (13), product quality (14) |
+| **Large or commercial** | real users, money, or long life | + market research (10), operations (15), the full CI enforcement |
+
+State the tier in the project's `AGENTS.md`; move up a tier when the project grows.
+
+## 7. Every artifact must earn its place
 Every file, rule, tool, and process step should have a clear goal and an expected benefit greater than its cost (reading time, tokens, maintenance). If it doesn't, merge it, shrink it, or delete it. This applies to this playbook too.

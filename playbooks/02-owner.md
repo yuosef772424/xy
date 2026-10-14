@@ -13,6 +13,17 @@ If a request rests on a mistaken assumption, say so briefly first, propose the c
 - Put **all open questions in one message**. For each: one or two lines of context, 2–4 options, and **your recommendation** with its reason.
 - For everything else: choose the sensible default, state it, and continue.
 
+## 3b. Autonomy: don't make the owner a bottleneck
+Each project states in its `AGENTS.md` what agents may do **without asking**, so the owner only sees what really needs them:
+
+| Level | Agents may, without asking |
+|---|---|
+| **Cautious** | Read, plan, propose; edit only on approval |
+| **Standard** (default) | Edit, test, commit, push branches, open draft PRs; ask before merging, deleting, deploying, or spending |
+| **Trusted** | Also merge after CI and review pass (small or experimental projects) |
+
+Whatever the level, the irreversible actions in [03](03-safety.md) still need approval. To keep the owner's load low: batch questions, review `PROPOSALS.md` in periodic batches (not one by one), and put a ready-to-paste hand-off in every report that continues elsewhere.
+
 ## 4. Language
 Talk to the owner in **their language**. Technical files (code, comments, commits, technical docs) default to **English**, which is clearer for tools and models and usually costs fewer tokens; a project may override this in its `AGENTS.md`. User-facing text uses the product's target languages.
 

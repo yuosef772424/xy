@@ -21,11 +21,13 @@ Ready-made Claude Code configuration that turns this playbook from *documents to
 
 ## Install
 
+Use the installer from the playbook repository. It installs everything (rules, playbooks, templates, tools, this kit) and **never overwrites existing files**:
+
 ```bash
-cp -r claude-code/CLAUDE.md claude-code/.claude /path/to/your-project/
-chmod +x /path/to/your-project/.claude/hooks/session-start.sh
+python scripts/install_playbook.py /path/to/your-project          # dry run
+python scripts/install_playbook.py /path/to/your-project --apply  # install
 ```
 
-Then copy `AGENTS.md` (and optionally `playbooks/`) into the project, and fill in its project-specific section.
+**Verified 2026-10-14** with Claude Code 2.1.300 in a test project: the three subagents and three skills were available, and the session-start hook delivered the key rules and `STATUS.md` to the model.
 
 > Claude Code's configuration format evolves. If something doesn't load, check the current docs for skills, subagents, and hooks, and update the kit (and propose the fix via `/propose`).

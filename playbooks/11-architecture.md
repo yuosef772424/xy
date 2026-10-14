@@ -32,5 +32,16 @@
 
 **A healthy project:** a newcomer can run it from the README in minutes · test, lint, and build are single commands · CI blocks bad merges · no secrets in the repository · the maps are fresh.
 
+## Adopting in an existing project
+Yes, the playbook works on existing projects. Adopt it **gradually**; don't restructure everything at once.
+
+1. **Install without overwriting:** `python <ai-playbook>/scripts/install_playbook.py <project>` (dry run), then add `--apply`. Existing files are kept; merge `CLAUDE.md` / `AGENTS.md` / `.claude/settings.json` by hand if they already exist (for example, add `@AGENTS.md` to your `CLAUDE.md`).
+2. **Map it:** `python scripts/gen_map.py`, then fill in `AGENTS.md` §8 (tier, autonomy, commands).
+3. **Record the baseline:** run the existing tests and note the current pass/fail state in `STATUS.md`, so later failures can be told apart from old ones ([06](06-debugging.md)).
+4. **Document as you go:** write a `MODULE.md` for each module **when a task first touches it**, not all at once.
+5. **Architecture health check:** a review agent lists the current violations of [12](12-architecture-rules.md) (cycles, cross-module internals, oversized units). Record them as known debt; don't fix them all now.
+6. **Ratchet, don't block:** add the architecture checks to CI with the current violations as an allowed baseline, so that **no new** violations get in, and shrink the baseline over time with small fix phases.
+7. **Retro-fit the plan:** write a short `ARCHITECTURE.md` describing the structure *as it is*, plus a `ROADMAP.md` for what's next. Run market research ([10](10-market-research.md)) only if the product direction is still open.
+
 ## Anti-patterns
 Building before module boundaries are clear · phases like "build the backend" that are too big to review · letting execution quietly change the architecture · designing parts no phase needs yet.

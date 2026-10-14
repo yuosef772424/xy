@@ -13,7 +13,7 @@
 
 ## 2. Keeping them true
 - **The structural part is generated, never hand-edited.** A pre-commit hook or CI runs `gen_map.py --check` and fails when the map is stale. The fix is always to re-run the generator. The generator also flags source directories that have no `MODULE.md`.
-- **The descriptive part is written by hand.** A PR that changes a module's public interface, dependencies, or invariants updates its `MODULE.md` **in the same PR**; reviewers check this. The architecture health check spot-checks a few `MODULE.md` files against the code.
+- **The descriptive part is written by hand.** A PR that changes a module's public interface, dependencies, or invariants updates its `MODULE.md` **in the same PR**; reviewers check this. [`scripts/doc_health.py`](../scripts/doc_health.py) flags a `MODULE.md` whose folder changed in many commits since it was last updated, plus broken links and oversized `STATUS.md`/`LESSONS.md` files; the session-start hook shows its warnings. The architecture health check spot-checks a few `MODULE.md` files against the code.
 - A `MODULE.md` answers in under a minute: its purpose (one line, copied into the map), public interface, depends on / used by, key files, invariants and gotchas, and how to test it. Make it as short as the module allows; don't restate the code.
 - Large projects can add a generated symbol index (`ctags`, tree-sitter) and a dependency graph.
 

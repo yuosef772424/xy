@@ -42,10 +42,20 @@ def build_map():
         "",
     ]
     missing = []
+    has_sources = set()  # directories that contain source files at any depth
+    for dirpath, dirnames, filenames in os.walk(ROOT):
+        dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS and not d.startswith(".")]
+        if any(os.path.splitext(f)[1] in SOURCE_EXTS for f in filenames):
+            d = dirpath
+            while d.startswith(ROOT) and d not in has_sources:
+                has_sources.add(d)
+                d = os.path.dirname(d)
     for dirpath, dirnames, filenames in os.walk(ROOT):
         dirnames[:] = sorted(d for d in dirnames if d not in SKIP_DIRS and not d.startswith("."))
         sources = sorted(f for f in filenames if os.path.splitext(f)[1] in SOURCE_EXTS)
         rel = os.path.relpath(dirpath, ROOT)
+        if dirpath not in has_sources:
+            continue  # docs-only folders (e.g. templates/) are not modules
         if "MODULE.md" in filenames:
             purpose = read_purpose(os.path.join(dirpath, "MODULE.md"))
             lines.append(f"## `{rel}/` — {purpose}")

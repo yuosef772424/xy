@@ -37,6 +37,8 @@
 
 ## Working agreements
 - Language of technical files: English (default) / other:
+- Project tier: tiny / small / medium / large (see playbooks/00-principles.md §6)
+- Autonomy level: cautious / standard / trusted (see playbooks/02-owner.md §3b)
 - Merge mode: owner merges / planner may merge after CI and review
 - Model for builder agents: e.g. sonnet
 

@@ -51,4 +51,4 @@ Understand (goal, acceptance criteria) → Plan (if bigger than a small fix) →
 | Writing briefs or LLM-feature prompts | [16 Prompting](playbooks/16-prompting.md) |
 
 ## 8. Project-specific information
-Fill this in for each project using [`templates/project-instructions.md`](templates/project-instructions.md): what the project is, stack, commands (install / run / test / lint / build), structure, conventions, gotchas, the language of technical files, and the merge mode (owner merges / planner may merge).
+Fill this in for each project using [`templates/project-instructions.md`](templates/project-instructions.md): what the project is, stack, commands (install / run / test / lint / build), structure, conventions, gotchas, the **tier** (scales the process, [00](playbooks/00-principles.md) §6), the **autonomy level** ([02](playbooks/02-owner.md) §3b), the language of technical files, and the merge mode.

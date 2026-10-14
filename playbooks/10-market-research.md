@@ -62,6 +62,9 @@ End with one of these:
 
 Per [01 · Judgment](01-judgment.md): a NO-GO or GO-WITH-CHANGES verdict is a valuable result. Don't bend the research toward the answer the owner hopes for.
 
+## Accuracy
+Competitor facts go stale and sources disagree. For each key claim (a feature, a price, user numbers), record the source and the date; confirm the important ones with a second independent source; and have a second agent spot-check the feature matrix and the verdict before you rely on them.
+
 ## Output
 
 `RESEARCH.md`, using [the template](../templates/market-research.md), with sources linked for every important claim and a date on each finding (market data goes stale).

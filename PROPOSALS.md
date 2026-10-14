@@ -6,4 +6,4 @@ New instruction ideas waiting for the owner's review. **Any agent, in any projec
 
 | # | Date | Source (project / session) | Proposal (one line) | Why / evidence | Scope | Status |
 |---|---|---|---|---|---|---|
-| 1 | 2026-10-14 | ai-playbook | Build a `new_project` scaffolder that applies the whole playbook in one command | Turns instructions into an executable tool; highest-leverage tool idea | general | 🆕 |
+| 1 | 2026-10-14 | ai-playbook | Build a `new_project` scaffolder that applies the whole playbook in one command | Turns instructions into an executable tool; highest-leverage tool idea | general | ✅ built as `scripts/install_playbook.py` (new and existing projects) |

@@ -47,11 +47,14 @@ Each one opens with its **goal**, **when to read it**, and **why it pays off**.
 | 15 | [Operations](playbooks/15-operations.md) | Deploy, monitor, back up, maintain |
 | 16 | [Prompting](playbooks/16-prompting.md) | Agent briefs and prompts inside LLM features |
 
-## Quick start
-1. Copy `AGENTS.md`, `playbooks/`, `templates/`, and `scripts/` into your project.
-2. For Claude Code, also copy the contents of `claude-code/` (see its [README](claude-code/README.md)).
-3. Fill in section 8 of `AGENTS.md` using [`templates/project-instructions.md`](templates/project-instructions.md).
-4. New project? Start with [11 · Architecture](playbooks/11-architecture.md). An existing project? Generate the map (`python scripts/gen_map.py`) and add a `MODULE.md` per module.
+## Quick start (new or existing project)
+```bash
+python scripts/install_playbook.py /path/to/project          # dry run: shows what will be added
+python scripts/install_playbook.py /path/to/project --apply  # installs; never overwrites existing files
+```
+Then fill in section 8 of the project's `AGENTS.md` (tier, autonomy, commands) and run `python scripts/gen_map.py`.
+- **New project:** start with [11 · Architecture](playbooks/11-architecture.md).
+- **Existing project:** follow [11 · Adopting in an existing project](playbooks/11-architecture.md#adopting-in-an-existing-project). Adopt gradually; nothing gets restructured at once.
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md). Agents propose changes through [`PROPOSALS.md`](PROPOSALS.md); the owner reviews them in batches.

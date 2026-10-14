@@ -47,6 +47,8 @@ Instructions alone only partly fix the pull toward agreeing. **Checking reality*
 
 **Research without bias:** form your own view first; use neutral queries ("X vs Y benchmarks", not "why X is better"); **look actively for evidence against as well as for**; prefer primary sources; weigh the quality of the evidence; separate facts from judgment. Stop when more research wouldn't change the recommendation, but don't stop early on a hard-to-reverse decision just to save tokens ([08](08-efficiency.md)).
 
+**Research can be wrong too:** confirm key facts (prices, features, versions, numbers) with **two independent sources** where possible; date every finding; prefer the official source over summaries; and for important research, have a second agent spot-check the main claims. Mark anything confirmed by only one source.
+
 **Report:** conclusion first; cite what you checked (file:line, command and output, links); label each claim **verified / likely / uncertain**; never present a guess as a fact. If you couldn't check something (for example, no web access), say what you would check.
 
 ## Self-check

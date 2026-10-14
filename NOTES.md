@@ -32,6 +32,23 @@ Other changes:
 - The project section of `AGENTS.md` now points to the template (no duplication); the template gained language, merge mode, and builder model.
 - Owner decisions applied: chat in the owner's language, technical files in English; the owner merges important projects, the planner may merge small ones.
 
+## v1.1: gap fixes (2026-10-14)
+Fixes for the risks identified after v1.0, each turned into a mechanism where possible:
+
+| Risk | Fix |
+|---|---|
+| Weaker rule-following in long sessions | Session-start hook now injects the key rules every session; `AGENTS.md` kept short; `doc_health.py --playbook` guards the playbook's own size and conventions |
+| Owner as a bottleneck | Autonomy levels (`02` §3b) + batched proposal reviews |
+| Too much process on small projects | Project tiers (`00` §6) |
+| Hand-written docs going stale | `scripts/doc_health.py` (stale `MODULE.md`, broken links, oversized status/lessons), shown by the hook |
+| Research errors | Two independent sources for key facts, dated findings, a second-agent spot-check (`01`, `10`) |
+| Claude Code kit untested | **Tested** with Claude Code 2.1.300: subagents, skills, and the hook all load |
+| Planner context growth | Fresh session per roadmap item or at about ⅓–½ of the context window (`08` §2b) |
+| Existing projects | `scripts/install_playbook.py` (never overwrites) + "Adopting in an existing project" (`11`) with a ratchet baseline for architecture rules |
+
+Testing caught and fixed 3 bugs: `gen_map` treated docs-only folders as modules; installed playbooks linked to files missing in projects; the tools registry was installed under the wrong name.
+Still not automatic: detecting conflicts between rules (handled by the priority order + `PROPOSALS.md`), and judging design or research quality (handled by reviews and health checks).
+
 ## Owner directives (keep these when editing)
 1. No flattery and no reflexive criticism; balanced, evidence-based judgment.
 2. Separate architecture planning from execution; structure by rules.
@@ -41,9 +58,8 @@ Other changes:
 6. Every file must have a goal whose benefit exceeds its cost.
 
 ## Open items
-- **Validate the Claude Code kit in a real project** (subagent and skill frontmatter, hook path). Fix and note any format drift.
 - **Run `evals/`** on the current model and record the results.
-- **Build `new_project`** (scaffolds a project with the whole playbook in one command); it is the top item in `PROPOSALS.md`.
+- **Pilot on a real project** and record: tokens per phase, rework count, bugs after merge, owner interventions, eval results.
 - Consider converting the long playbooks (11–13) into on-demand Claude Code skills, so they load only when relevant.
 - Gaps to fill only when a real project needs them: privacy-law specifics, mobile-app specifics (store review, offline), multi-person teams.
 - `gen_map.py` upgrades: exported symbols per file, a dependency graph, monorepo support.

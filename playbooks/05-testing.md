@@ -6,7 +6,7 @@
 - **Every bug fix** gets a test that fails before the fix and passes after it.
 - **Every new behavior** gets a happy-path test and edge-case tests: empty, zero, maximum, unicode/RTL text, `null`, invalid input, failing dependencies, timeouts.
 - Test **behavior** (inputs → outputs), not implementation details. Mock only at the boundaries.
-- Levels: **unit** (business logic) · **integration** (module ↔ database or external API, with fakes or containers) · **contract** (public interfaces, schemas, events) · **end-to-end** (only a few critical user journeys) · **architecture** (dependency and size rules, [12](12-architecture-rules.md) Part F) · **map freshness** ([07](07-maps-and-docs.md)) · **security** (dependency audit, secret scan).
+- Levels: **unit** (business logic) · **integration** (module ↔ database or external API, with fakes or containers) · **contract** (public interfaces, schemas, events) · **end-to-end** (only a few critical user journeys) · **architecture** (dependency and size rules, [12](12-architecture-rules.md) Part F) · **map freshness and doc health** (`gen_map.py --check`, `doc_health.py`, [07](07-maps-and-docs.md)) · **security** (dependency audit, secret scan).
 
 ## 2. One command per level
 | Command | Covers | Rough target |

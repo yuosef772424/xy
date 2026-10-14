@@ -32,6 +32,8 @@ AI agents are only as good as their instructions. Most projects give them none, 
 9. [Security](playbooks/09-security.md)
 10. [Communication & reporting](playbooks/10-communication.md)
 11. [Start a new project](playbooks/11-new-project.md)
+12. [Architecture planning: designing the project's structure](playbooks/12-architecture-planning.md)
+13. [Execution orchestration: one planner, builder agents, low token cost](playbooks/13-execution-orchestration.md)
 
 ## Quick start
 

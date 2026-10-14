@@ -16,6 +16,8 @@ AI agents are only as good as their instructions. Most projects give them none, 
 | [`playbooks/`](playbooks/) | Step-by-step guides, one per kind of task. |
 | [`templates/`](templates/) | Ready-to-fill files: project instructions, task briefs, PR descriptions. |
 | [`prompts/`](prompts/) | How to write prompts that get great results. |
+| [`claude-code/`](claude-code/) | **Claude Code kit:** `CLAUDE.md`, subagents, skills (`/handoff`, `/status`, `/propose`), and a session-start hook. Copy it into any project. |
+| [`PROPOSALS.md`](PROPOSALS.md) | Inbox of proposed new instructions, waiting for the owner's review. |
 | [`evals/`](evals/) | Test cases that check whether a model actually follows these instructions. |
 | [`scripts/`](scripts/) | Reusable tools, listed in the [tools registry](scripts/README.md). |
 
@@ -47,6 +49,10 @@ AI agents are only as good as their instructions. Most projects give them none, 
 19. [Token budget: spend for value, not for minimum cost](playbooks/19-token-budget.md)
 20. [Prompts for LLM features inside your products](playbooks/20-llm-feature-prompts.md)
 21. [Tooling & R&D: invest tokens to work better](playbooks/21-tooling-and-rnd.md)
+22. [Proposing new instructions: the proposals inbox](playbooks/22-proposing-instructions.md)
+23. [Operations: deploy, monitor, back up, maintain](playbooks/23-operations.md)
+24. [Product quality: UX, accessibility, RTL & localization, performance](playbooks/24-product-quality.md)
+25. [Agent safety: prompt injection, secrets, reversible actions](playbooks/25-agent-safety.md)
 
 ## Quick start
 

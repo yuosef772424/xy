@@ -16,6 +16,9 @@ Working notes collected while the instructions are being written one by one. **D
 | 8 | Codebase maps: a generated project map + a `MODULE.md` per module + a reading protocol | `playbooks/14-codebase-maps.md`, `templates/MODULE.md`, `scripts/gen_map.py` | **No, deferred** |
 | 9 | Automated testing: check levels, token-efficient output, hooks and CI | `playbooks/15-automated-testing.md` | **No, deferred** |
 | 10 | Batching: more tasks per invocation with quality guards | `playbooks/16-batching-work.md` | **No, deferred** |
+| 11–13 | Core principles, owner protocol, continuous improvement, token budget, LLM-feature prompts, evals | `00c`, `17`–`20`, `evals/` | **No, deferred** |
+| 14 | Tooling & R&D + tools registry | `21`, `scripts/README.md` | **No, deferred** |
+| 15 | Proposals inbox (+ gaps: operations, product quality, agent safety, Claude Code kit) | `22`–`25`, `PROPOSALS.md`, `claude-code/` | **No, deferred** |
 
 ## Notes for the final pass
 
@@ -90,6 +93,12 @@ From Claude's suggestions (S) and from mining the owner's past sessions (P):
 - **Overlap:** `18` §2 (automate repeats) and `21` cover the same habit at different scales. In the final pass, `18` should keep the "notice and script it" habit and link to `21` for standards, budget, and the registry.
 - **The R&D share (10–20%) is a guideline** per `00c`; the real test is the return in `21` §3.
 - **This repository is itself the general toolbox.** The final `README.md` should present it as playbook + toolkit. The `new_project` scaffolder would be the highest-value next tool, since it applies the whole playbook in one command.
+
+### From instruction 15 (gaps + proposals inbox)
+- **Inbox vs notes:** `PROPOSALS.md` holds ideas *for review*; `NOTES.md` holds *accepted* changes waiting for consolidation. Keep both, and say so in the final README.
+- **Operations (`23`)** replaces the deferred item O; it is scaled by project type.
+- **The Claude Code kit is the main differentiator:** behavior loads automatically (CLAUDE.md import, subagents, skills, a hook) instead of depending on the model reading docs. The hook was tested in a scratch dir. The settings JSON is valid. The skill and agent frontmatter follows the current documented format, but **verify it in a real project** and adjust if Claude Code changed. Possible next: turn the bigger playbooks (12, 12a, 13) into on-demand skills, so they load only when relevant.
+- **Remaining gaps noted, not yet written:** data/privacy law specifics (GDPR-style) beyond `23` §3; cost estimation for building the project (time/tokens per phase), now partly in `19`; mobile-app specifics (store review, offline); team collaboration (multiple humans). Add when a real project needs them.
 
 ### Validation
 - **Instructions reduce sycophancy but don't remove it,** because it comes partly from training. Add an `evals/` folder with test prompts (deliberately bad ideas, false claims stated confidently, pushback on correct answers, and good ideas that should *not* be criticized) to measure whether the instructions work with each model.

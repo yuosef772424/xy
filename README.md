@@ -16,12 +16,14 @@ AI agents are only as good as their instructions. Most projects give them none, 
 | [`playbooks/`](playbooks/) | Step-by-step guides, one per kind of task. |
 | [`templates/`](templates/) | Ready-to-fill files: project instructions, task briefs, PR descriptions. |
 | [`prompts/`](prompts/) | How to write prompts that get great results. |
+| [`evals/`](evals/) | Test cases that check whether a model actually follows these instructions. |
 | [`scripts/`](scripts/) | Tools such as `gen_map.py`, which generates the project map. |
 
 ### Playbooks
 
 0. [Honest judgment: no flattery, no reflexive criticism](playbooks/00-honest-judgment.md)
 0b. [Evidence over agreement: research to correct bias](playbooks/00b-evidence-over-agreement.md)
+0c. [Core principles: goals over rigid numbers, rule priority, spend for value](playbooks/00c-core-principles.md)
 1. [Understand the task](playbooks/01-understand-the-task.md)
 2. [Plan the work](playbooks/02-planning.md)
 3. [Write code](playbooks/03-writing-code.md)
@@ -40,6 +42,10 @@ AI agents are only as good as their instructions. Most projects give them none, 
 14. [Codebase maps: navigate without reading everything](playbooks/14-codebase-maps.md)
 15. [Automated testing: let machines verify](playbooks/15-automated-testing.md)
 16. [Batching work: more done per invocation, same quality](playbooks/16-batching-work.md)
+17. [Working with the owner: questions vs requests, decisions, reports, hand-offs](playbooks/17-working-with-the-owner.md)
+18. [Continuous improvement: get smarter with every session](playbooks/18-continuous-improvement.md)
+19. [Token budget: spend for value, not for minimum cost](playbooks/19-token-budget.md)
+20. [Prompts for LLM features inside your products](playbooks/20-llm-feature-prompts.md)
 
 ## Quick start
 

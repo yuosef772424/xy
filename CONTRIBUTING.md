@@ -8,6 +8,7 @@ Contributions that make agents do better work are welcome.
 - **Be concrete.** Give commands, checklists, and short examples.
 - **Keep it short.** One playbook should take under 5 minutes to read.
 - **Follow the shape:** *Goal → Steps → Checklist → Anti-patterns*.
+- **State the goal and the desired outcome; treat numbers as guidelines.** Write "keep it short enough to read in a minute (around 60 lines)", not "max 60 lines". Models differ, and so do projects.
 - **Be tool-agnostic.** Mention specific tools only as examples.
 
 ## Process

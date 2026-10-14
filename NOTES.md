@@ -56,7 +56,11 @@ Working notes collected while the instructions are being written one by one. **D
 - **Global principle candidate:** "machines verify, models decide". Anything a script can check shouldn't cost model tokens. This belongs in `AGENTS.md` next to the cost principles.
 - **The project-setup playbook (`11`)** should include: create `PROJECT_MAP.md` + the generator, the `check:*` commands, the pre-commit hook, and a `MODULE.md` per module from day one.
 
-### Proposed instructions awaiting the owner's approval
+### Proposed instructions (status after owner approval on 2026-10-14)
+Applied: A, B, C, D, E, H, L → `17`; G, M + new continuous improvement → `18`; F, I + new token stance → `19`; K → `20`; N → `00c`; P → `evals/`. **Deferred:** O (post-build ops), until a project is ready to deploy. **Pending edit:** J (baseline check on the parent commit) → add to `05-debugging` in the final pass.
+Owner decisions taken by default (owner said "add what you find suitable"): technical files in English, chat in the owner's language; owner merges important projects, planner may merge small or experimental ones.
+
+#### Original list
 From Claude's suggestions (S) and from mining the owner's past sessions (P):
 - A · Owner-interaction protocol: ask only real decisions, all questions in one message, options + recommendation, short mobile-friendly reports (S1, P9).
 - B · Question ≠ request: when the owner only asks, answer and change nothing (P7).
@@ -74,6 +78,12 @@ From Claude's suggestions (S) and from mining the owner's past sessions (P):
 - N · Rule priority order when instructions conflict (S7).
 - O · Post-build: deployment, monitoring, backups, incidents (S8).
 - P · `evals/` to test the instructions themselves (S9).
+
+### From instructions 11–13 (flexibility, continuous improvement, token stance)
+- **Owner directive: flexible rules.** Rewrite hard numbers across *all* playbooks as goal + guideline in the final pass. Known spots: `13` (≤ 40-line reports, ≤ 50k context), `12a` (size limits table), `14` (≤ 60-line MODULE.md, ~200-line read threshold), `15` (time targets), `16` (~5 tasks / ~300 lines), `12` (~300-line ARCHITECTURE.md), `12b` (10–25 competitors). `00c` §1 now states the principle globally, so a light touch may be enough.
+- **Owner directive: tokens are a budget to invest.** The wording of `13` §6 and `16` leans toward "minimize". Align it with `19`: savings come from waste, never from research or verification.
+- **`00c` is the seed of the new `AGENTS.md`.** In the final pass, `AGENTS.md` should be roughly: principles (00c) + honest judgment (00 summary) + core loop + owner protocol summary (17) + links.
+- **`18` and `NOTES.md` overlap in spirit:** this repository's `NOTES.md` is itself a lessons/improvement log for the playbook. Keep it as the playbook's own retrospective file.
 
 ### Validation
 - **Instructions reduce sycophancy but don't remove it,** because it comes partly from training. Add an `evals/` folder with test prompts (deliberately bad ideas, false claims stated confidently, pushback on correct answers, and good ideas that should *not* be criticized) to measure whether the instructions work with each model.

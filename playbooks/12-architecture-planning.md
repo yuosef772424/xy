@@ -16,8 +16,10 @@ This is the first of two separate planning jobs:
 
 ## Steps
 
+0. **Research the market and feasibility first:** competitors, differentiation, and a GO / NO-GO verdict. → [12b](12b-market-and-feasibility-research.md). Don't design a project that shouldn't be built.
 1. **Define the problem:** users, the core job the project does for them, success criteria, and non-goals.
 2. **List the constraints:** budget, deadline, team skills, hosting, compliance, existing systems.
+2b. **Classify the features** (Must / Should / Could / Won't) and **apply the architecture rules** in [12a](12a-architecture-rules.md), including the extension test. The structure is chosen by those rules, not by taste.
 3. **Explore options for the decisions that are hard to reverse:** language and framework, data model, module boundaries, interfaces between modules, and deployment. Compare 2–3 options for each with evidence (see [00b](00b-evidence-over-agreement.md)). Decide quickly on easy-to-reverse choices.
 4. **Define module boundaries and contracts.** Each module has one owner phase, a clear public interface, and its own tests. Good boundaries are what let builder agents later work in parallel without conflicts.
 5. **Split the work into phases.** Each phase:
@@ -33,6 +35,8 @@ This is the first of two separate planning jobs:
 - **`ARCHITECTURE.md`:** purpose, module map, data model, interfaces, tech choices, and the reason for each. Keep it under ~300 lines; it gets read by every planner session.
 - **`ROADMAP.md`:** an ordered list of phases, each with goal, scope (files and modules), definition of done, dependencies, and the parallel-safe flag.
 - **`docs/decisions/NNN-title.md`:** one file per major decision.
+- **`RESEARCH.md`:** market, competitors, differentiation, feasibility verdict ([12b](12b-market-and-feasibility-research.md)).
+- **CI architecture checks** that enforce the dependency and size rules ([12a](12a-architecture-rules.md) Part F).
 
 ## Token vs. quality balance at this stage
 

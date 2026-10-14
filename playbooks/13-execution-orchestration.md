@@ -50,6 +50,32 @@ Things that wake the planner:
 - **Deviations:** the builder lists every deviation from the brief, and the planner explicitly accepts or rejects each one.
 - **Model choice:** use the cheaper model by default. Use a stronger model only for open-ended research or design, and state why.
 
+## 4b. Prior-art research for each phase
+
+**Goal:** Before building a phase, find out what already exists, so builders reuse proven solutions and learn from others' mistakes instead of reinventing them.
+
+**What to look for**, in projects that are similar *or not*, as long as they solved the same **task**:
+- libraries or services that already do the job (build vs buy vs reuse);
+- open-source implementations of the same feature: how they structured it, and what their issue tracker says went wrong;
+- known patterns, best practices, and common pitfalls for this type of task;
+- security or performance lessons ("X approach broke at scale because…").
+
+**Scale the research to the phase** (cost balance):
+
+| Phase type | Research | Who |
+|---|---|---|
+| Routine (CRUD, config, small UI) | **None**, or a quick check of the project's own `docs/prior-art/` | The builder itself |
+| Standard feature with known solutions (auth, payments, file upload, search) | **Quick:** 3–8 searches; pick a library or pattern | A short research step at the start of the builder's task |
+| Novel, risky, or core feature | **Dedicated research agent** that compares 2–4 approaches and returns a recommendation | A separate research agent, before the builder |
+
+**Rules:**
+- **Report in ≤ 30 lines:** options found, the recommendation, why, links, and the license of any reusable code.
+- **Save the findings** in `docs/prior-art/<topic>.md`, so later phases reuse them instead of searching again.
+- **Check licenses** before copying code: MIT, Apache-2.0, and BSD are usually fine with attribution; GPL/AGPL need an explicit decision.
+- **Check health** before adding a dependency: recent releases, open issues, maintainers, and download counts.
+- **Respect the architecture:** a borrowed solution must fit the module rules in [12a](12a-architecture-rules.md). If it requires breaking them, escalate (see §7).
+- **Batch research for parallel phases** into one agent when their topics overlap, to save wakes.
+
 ## 5. Review and merge
 
 1. Read the builder's report, then **re-check its claims with cheap commands**, not by trusting the narrative: commit order, protected files, registry diffs, conflicts (`merge-tree`).

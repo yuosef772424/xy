@@ -10,6 +10,9 @@ Working notes collected while the instructions are being written one by one. **D
 | 2 | Evidence over agreement: research to correct bias, with cost proportional to stakes | `playbooks/00b-evidence-over-agreement.md` | **No, deferred to the final pass** |
 | 3 | Architecture planning, kept separate from execution | `playbooks/12-architecture-planning.md` | **No, deferred** |
 | 4 | Execution orchestration: planner + builder agents, token/quality balance (adapted from the owner's `WORKING_METHOD.md`) | `playbooks/13-execution-orchestration.md`, `templates/agent-brief.md`, `templates/status.md` | **No, deferred** |
+| 5 | Architecture rules: scope classes, extension test, decomposition, dependency rules, growth limits, CI enforcement | `playbooks/12a-architecture-rules.md` (linked from `12`) | **No, deferred** |
+| 6 | Market & feasibility research with a GO / NO-GO verdict | `playbooks/12b-market-and-feasibility-research.md`, `templates/market-research.md` | **No, deferred** |
+| 7 | Prior-art research for each execution phase, scaled to the phase's risk | `playbooks/13-execution-orchestration.md` §4b | **No, deferred** |
 
 ## Notes for the final pass
 
@@ -32,6 +35,15 @@ Working notes collected while the instructions are being written one by one. **D
 - **The numbers are from one project** (10% cache price, 95k–160k per review, 50k context limit). Label them as examples measured in 2026-10 that may change, not as fixed rules.
 - **Global principle candidate:** "save on overhead, never on verification" (from `13` §6) pairs with "effort ∝ stakes × uncertainty" (from `00b`). Together they could become one top-level cost principle in `AGENTS.md`.
 - **Single small-task mode:** `13` is heavy for small projects. Add a rule for when to use it, e.g. only for 3+ phases or multi-day work; otherwise just use the core loop.
+
+### From instructions 5–7
+- **Size:** `12a` is long (~200 lines). It is a reference to consult during design, not something loaded every turn. In the final pass, consider a short "rules summary" (~20 lines) for `ARCHITECTURE.md` plus the full file as a reference.
+- **Stack-specific examples:** the tool names in `12a` Part F are examples. Consider per-stack appendices later (JS/TS, Python, Go, Java).
+- **Size limits are heuristics,** not laws. Keep the wording "soft limit" so agents don't split files mechanically.
+- **Honest expectation:** the rules sharply reduce structural decay, but CI enforcement (Part F) and periodic health checks are what make them hold. Without enforcement they will drift like any document.
+- **Research overlap:** `00b` (evidence levels), `12b` (deep market research), and `13` §4b (prior-art per phase) share one cost model. Unify the wording, and possibly extract a shared "research" playbook.
+- **Ordering:** `12b` runs *before* `12`'s design steps, so the numbering should reflect the real order: research → scope → architecture → roadmap → execution.
+- **Licensing and legal** appear in both `12b` and `13` §4b; they may deserve a small dedicated section in `09-security` or a new compliance playbook.
 
 ### Validation
 - **Instructions reduce sycophancy but don't remove it,** because it comes partly from training. Add an `evals/` folder with test prompts (deliberately bad ideas, false claims stated confidently, pushback on correct answers, and good ideas that should *not* be criticized) to measure whether the instructions work with each model.

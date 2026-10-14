@@ -33,6 +33,8 @@ AI agents are only as good as their instructions. Most projects give them none, 
 10. [Communication & reporting](playbooks/10-communication.md)
 11. [Start a new project](playbooks/11-new-project.md)
 12. [Architecture planning: designing the project's structure](playbooks/12-architecture-planning.md)
+    - 12a. [Architecture rules: structure by rules, not by taste](playbooks/12a-architecture-rules.md)
+    - 12b. [Market & feasibility research](playbooks/12b-market-and-feasibility-research.md)
 13. [Execution orchestration: one planner, builder agents, low token cost](playbooks/13-execution-orchestration.md)
 
 ## Quick start

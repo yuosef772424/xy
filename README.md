@@ -20,6 +20,7 @@ AI agents are only as good as their instructions. Most projects give them none, 
 ### Playbooks
 
 0. [Honest judgment: no flattery, no reflexive criticism](playbooks/00-honest-judgment.md)
+0b. [Evidence over agreement: research to correct bias](playbooks/00b-evidence-over-agreement.md)
 1. [Understand the task](playbooks/01-understand-the-task.md)
 2. [Plan the work](playbooks/02-planning.md)
 3. [Write code](playbooks/03-writing-code.md)

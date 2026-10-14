@@ -19,6 +19,7 @@ AI agents are only as good as their instructions. Most projects give them none, 
 
 ### Playbooks
 
+0. [Honest judgment: no flattery, no reflexive criticism](playbooks/00-honest-judgment.md)
 1. [Understand the task](playbooks/01-understand-the-task.md)
 2. [Plan the work](playbooks/02-planning.md)
 3. [Write code](playbooks/03-writing-code.md)
@@ -40,6 +41,7 @@ AI agents are only as good as their instructions. Most projects give them none, 
 
 ## Principles
 
+- **Honest, balanced judgment.** Don't flatter bad ideas; don't attack good ones.
 - **Understand before acting.** Read the code and the request before you change anything.
 - **Small, verified steps.** Make each change minimal and prove it works.
 - **Match the codebase.** New code should look like it was always there.

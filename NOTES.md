@@ -56,5 +56,24 @@ Working notes collected while the instructions are being written one by one. **D
 - **Global principle candidate:** "machines verify, models decide". Anything a script can check shouldn't cost model tokens. This belongs in `AGENTS.md` next to the cost principles.
 - **The project-setup playbook (`11`)** should include: create `PROJECT_MAP.md` + the generator, the `check:*` commands, the pre-commit hook, and a `MODULE.md` per module from day one.
 
+### Proposed instructions awaiting the owner's approval
+From Claude's suggestions (S) and from mining the owner's past sessions (P):
+- A · Owner-interaction protocol: ask only real decisions, all questions in one message, options + recommendation, short mobile-friendly reports (S1, P9).
+- B · Question ≠ request: when the owner only asks, answer and change nothing (P7).
+- C · Correct the owner's premises before executing (S2).
+- D · Language: chat in the owner's language; files per project, **owner decision needed** (P8 found Arabic docs in one project and English in another).
+- E · Hand-off message: end work with a short, ready-to-paste message for the other session or a new session (P3, P4).
+- F · Fresh session per roadmap item; `STATUS.md` ≤ 60 lines, read first (P4).
+- G · Failure registry with `reopen_if`; supersede decision records, never re-argue them (P5).
+- H · Measurable progress reports: before/after comparisons, numbers (P11).
+- I · Cost tracking: check usage regularly, trim tool output, report tokens per phase vs estimate (S6, P1).
+- J · Baseline check: run a failing test on the parent commit before blaming the change (P14).
+- K · Prompt design for LLM features: closed-list choices, treat user claims as data, state confidence, validate outputs in code (P6).
+- L · Git: draft PRs; the owner merges; never reopen a closed PR (P10). Conflicts with `13`'s "merge in the same turn"; needs a decision.
+- M · Lessons-learned loop after each project, fed back into the playbook (S5).
+- N · Rule priority order when instructions conflict (S7).
+- O · Post-build: deployment, monitoring, backups, incidents (S8).
+- P · `evals/` to test the instructions themselves (S9).
+
 ### Validation
 - **Instructions reduce sycophancy but don't remove it,** because it comes partly from training. Add an `evals/` folder with test prompts (deliberately bad ideas, false claims stated confidently, pushback on correct answers, and good ideas that should *not* be criticized) to measure whether the instructions work with each model.
